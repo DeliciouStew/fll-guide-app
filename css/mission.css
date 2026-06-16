@@ -92,8 +92,8 @@
 .map-wrapper {
   position: relative;
   /* 뷰포트 높이에 맞게 너비를 역산: 너비 = 가용높이 × (이미지 비율) */
-  width: min(100%, calc((100vh - 92px) * 547 / 365));
-  aspect-ratio: 547 / 365;
+  width: min(100%, calc((100vh - 92px) * 1914 / 1094));
+  aspect-ratio: 1914 / 1094;
   background: #1a2a1a;
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -102,11 +102,11 @@
 
 /* Strategy 모드: 맵 아래 컨트롤 영역 확보 */
 #section-strategy .map-wrapper {
-  width: min(100%, calc((100vh - 260px) * 547 / 365));
+  width: min(100%, calc((100vh - 260px) * 1914 / 1094));
 }
 
 #section-strategy .strat-map-group {
-  width: min(100%, calc((100vh - 260px) * 547 / 365));
+  width: min(100%, calc((100vh - 260px) * 1914 / 1094));
 }
 
 .map-wrapper img {
