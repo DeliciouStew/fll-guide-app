@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLL Robot Game Guide — UNEARTHED™ 2024–25</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --soil:  #1a1208;
+      --earth: #241a0a;
+      --stone: #2e2416;
+      --sand:  #c8a96e;
+      --cream: #f0e6cc;
+      --moss:  #4a7c3f;
+      --rust:  #c0522a;
+      --muted: #8a7a62;
+      --font-display: 'Fraunces', serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--soil);
+      color: var(--cream);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Navigation ── */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 52px;
+      background: rgba(26,18,8,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(200,169,110,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--sand);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo span { color: var(--muted); font-weight: 400; }
+
+    .nav-links { display: flex; gap: 4px; align-items: center; }
+
+    .nav-links a {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cream);
+      background: rgba(200,169,110,0.08);
+    }
+
+    /* ── Page ── */
+    .page {
+      padding-top: 52px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--rust);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.12;
+      margin-bottom: 20px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--sand);
+      font-weight: 400;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(200,169,110,0.15);
+      margin: 0;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      padding: 36px 0 24px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── Card grid ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding-bottom: 64px;
+    }
+
+    @media (max-width: 680px) {
+      .card-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--earth);
+      border: 1px solid rgba(200,169,110,0.12);
+      border-radius: 12px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s, border-color 0.18s;
+      cursor: pointer;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent-color, var(--rust));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.22s ease;
+    }
+
+    .card:hover { transform: translateY(-3px); border-color: rgba(200,169,110,0.25); }
+    .card:hover::after { transform: scaleX(1); }
+
+    .card-icon { font-size: 1.5rem; }
+
+    .card-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+
+    .card-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .card-cta {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--sand);
+      margin-top: 6px;
+    }
+
+    .card-cta.muted { color: var(--muted); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid rgba(200,169,110,0.1);
+      padding: 20px 28px;
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-left {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .footer-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--rust);
+      border: 1px solid rgba(192,82,42,0.4);
+      padding: 3px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">FLL<span>/Robot Game</span></a>
+    <div class="nav-links">
+      <a href="mission-strategy.html">Mission Strategy</a>
+      <a href="#">Robot Design</a>
+      <a href="#">Programming</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <section class="hero">
+      <p class="hero-eyebrow">FLL Challenge 2024–25</p>
+      <h1 class="hero-title">Robot Game<br><em>Guide for beginners</em></h1>
+      <p class="hero-sub">Everything a first-year FLL team needs to plan missions, build a robot, and write code — all in one place.</p>
+    </section>
+
+    <hr class="divider">
+
+    <p class="section-label">Where do you want to start?</p>
+
+    <div class="card-grid">
+
+      <a href="mission-strategy.html" class="card" style="--accent-color: #c0522a;">
+        <div class="card-icon">🗺️</div>
+        <div class="card-label">Section 01</div>
+        <div class="card-title">Mission Strategy</div>
+        <p class="card-desc">Explore the mission table, understand scoring, and plan your route with the interactive route planner.</p>
+        <div class="card-cta">Open →</div>
+      </a>
+
+      <div class="card" style="--accent-color: #4a7c3f;">
+        <div class="card-icon">🔧</div>
+        <div class="card-label">Section 02</div>
+        <div class="card-title">Robot Design</div>
+        <p class="card-desc">Learn how to build a stable chassis, design attachments, and improve consistency match after match.</p>
+        <div class="card-cta muted">Coming soon</div>
+      </div>
+
+      <div class="card" style="--accent-color: #4a6e8a;">
+        <div class="card-icon">💻</div>
+        <div class="card-label">Section 03</div>
+        <div class="card-title">Programming</div>
+        <p class="card-desc">Start with SPIKE Prime or EV3 block coding, learn how to drive straight, turn, and complete missions.</p>
+        <div class="card-cta muted">Coming soon</div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <span class="footer-left">FLL Robot Game Guide — for first-year teams</span>
+    <span class="footer-badge">UNEARTHED™ 2024–25</span>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission Strategy — FLL Robot Game Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/mission.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="mission-header">
+    <div class="header-left">
+      <a href="index.html" class="header-logo">FLL<span>/Robot Game</span></a>
+      <a href="index.html" class="back-link">← Home</a>
+    </div>
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="btn-overview" onclick="switchMode('overview')">Overview</button>
+      <button class="mode-btn" id="btn-strategy" onclick="switchMode('strategy')">Strategy</button>
+    </div>
+  </header>
+
+  <div class="mission-page">
+
+    <!-- ══════════════ OVERVIEW MODE ══════════════ -->
+    <section class="mode-section active" id="section-overview">
+      <div class="map-wrapper" id="overview-map">
+        <img src="assets/mission-map.png" alt="FLL UNEARTHED Mission Map" onerror="this.style.display='none'">
+      </div>
+    </section>
+
+    <!-- ══════════════ STRATEGY MODE ══════════════ -->
+    <section class="mode-section" id="section-strategy">
+      <div class="strat-map-group">
+        <div class="map-wrapper" id="strategy-map">
+          <img src="assets/mission-map.png" alt="FLL UNEARTHED Mission Map" onerror="this.style.display='none'">
+        </div>
+        <div class="info-bar">
+          <div class="info-stats">
+            <span>In route: <strong id="stat-in-route">0</strong></span>
+            <span>Connections: <strong id="stat-connections">0</strong></span>
+            <span>Est. pts: <strong id="stat-pts">0</strong></span>
+          </div>
+          <span class="info-hint">Click ① then ② to connect</span>
+        </div>
+      </div>
+
+      <div class="strat-toolbar">
+        <button id="btn-clear">✕ Clear arrows</button>
+        <button id="btn-reset">⊘ Reset all</button>
+      </div>
+
+      <div class="route-section">
+        <h3>Your Route</h3>
+        <div id="route-container">
+          <p class="route-empty">No connections yet. Click two nodes to connect them.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ══════════════ POPUP ══════════════ -->
+  <div class="popup-overlay" id="popup-overlay">
+    <div class="popup-card">
+      <button class="popup-close" id="popup-close">✕</button>
+      <div class="popup-tag" id="popup-tag">Mission 01</div>
+      <div class="popup-title" id="popup-title"></div>
+      <div class="popup-pts" id="popup-pts"></div>
+      <div class="popup-img-box" id="popup-img-box"></div>
+      <div class="popup-tips-label">Strategy Tips</div>
+      <ul class="popup-tips" id="popup-tips"></ul>
+    </div>
+  </div>
+
+  <script src="js/data/missions.js"></script>
+  <script src="js/overview.js"></script>
+  <script src="js/strategy.js"></script>
+  <script>
+    function switchMode(mode) {
+      document.getElementById('section-overview').classList.toggle('active', mode === 'overview');
+      document.getElementById('section-strategy').classList.toggle('active', mode === 'strategy');
+      document.getElementById('btn-overview').classList.toggle('active', mode === 'overview');
+      document.getElementById('btn-strategy').classList.toggle('active', mode === 'strategy');
+
+      if (mode === 'strategy') {
+        renderStrategy();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderOverview();
+    });
+  </script>
+</body>
+</html>
