@@ -83,20 +83,30 @@
 .mode-section {
   display: none;
   flex: 1;
-  padding: 20px 16px;
+  padding: 12px 16px;
 }
 
-.mode-section.active { display: flex; flex-direction: column; }
+.mode-section.active { display: flex; flex-direction: column; align-items: center; }
 
 /* ── Map wrapper ── */
 .map-wrapper {
   position: relative;
-  width: 100%;
+  /* 뷰포트 높이에 맞게 너비를 역산: 너비 = 가용높이 × (1366/682) */
+  width: min(100%, calc((100vh - 92px) * 1366 / 682));
   aspect-ratio: 1366 / 682;
   background: #1a2a1a;
   border: 1px solid var(--border);
   border-radius: 8px;
   overflow: hidden;
+}
+
+/* Strategy 모드: 맵 아래 컨트롤 영역 확보 */
+#section-strategy .map-wrapper {
+  width: min(100%, calc((100vh - 260px) * 1366 / 682));
+}
+
+#section-strategy .strat-map-group {
+  width: min(100%, calc((100vh - 260px) * 1366 / 682));
 }
 
 .map-wrapper img {
