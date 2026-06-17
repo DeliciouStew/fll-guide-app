@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robot Design — FLL Robot Game Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/mission.css">
+  <link rel="stylesheet" href="css/robot.css">
+</head>
+<body>
+
+  <header class="robot-header">
+    <div class="header-left">
+      <a href="index.html" class="header-logo">FLL<span>/Robot Game</span></a>
+      <a href="index.html" class="back-link">← Home</a>
+    </div>
+    <div class="mode-toggle">
+      <button class="mode-btn robot-tab-btn active" id="rbtn-chassis" onclick="switchRobotTab('chassis')">Chassis</button>
+      <button class="mode-btn robot-tab-btn" id="rbtn-attachments" onclick="switchRobotTab('attachments')">Attachments</button>
+    </div>
+  </header>
+
+  <div class="robot-page">
+
+    <!-- ══════════════ CHASSIS TAB ══════════════ -->
+    <section class="tab-section active" id="tab-chassis">
+      <p class="section-eyebrow">Section 02 · Chassis</p>
+      <h1 class="section-title">Build a stable base</h1>
+      <p class="section-desc">A good chassis doesn't just hold the robot together — it makes every mission more consistent. Get the foundation right first.</p>
+
+      <div class="cards-grid">
+
+        <div class="principle-card">
+          <div class="card-header">
+            <div class="card-header-left">
+              <div class="card-icon-box">⚙️</div>
+              <div>
+                <div class="card-title">Drive System</div>
+                <div class="card-subtitle">How the robot moves</div>
+              </div>
+            </div>
+            <span class="card-chevron">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="card-body-inner">
+              <ul class="tip-list">
+                <li>Use a <strong>differential drive</strong> (2 driven wheels + 1 or 2 passive casters)</li>
+                <li>Place the two drive wheels as far apart as possible for stable turning</li>
+                <li>Use the same size wheels on both sides — mismatched wheels cause drift</li>
+                <li>Keep caster wheels lightweight so they don't affect the drive</li>
+              </ul>
+              <div class="tip-highlight">💡 For SPIKE Prime: Large wheels on ports A & E give the most torque and speed balance.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="principle-card">
+          <div class="card-header">
+            <div class="card-header-left">
+              <div class="card-icon-box">⚖️</div>
+              <div>
+                <div class="card-title">Weight & Balance</div>
+                <div class="card-subtitle">Stability under movement</div>
+              </div>
+            </div>
+            <span class="card-chevron">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="card-body-inner">
+              <ul class="tip-list">
+                <li>Keep the center of gravity <strong>low and centered</strong> between the drive wheels</li>
+                <li>Place the hub/brick as low as possible on the chassis</li>
+                <li>Heavy attachments at the front can cause the robot to "nose-dive" — counterbalance with rear weight</li>
+                <li>Test by pushing gently on each side — it should not tip easily</li>
+              </ul>
+              <div class="tip-highlight">💡 A robot that tips during a run loses the mission. Balance first, then speed.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="principle-card">
+          <div class="card-header">
+            <div class="card-header-left">
+              <div class="card-icon-box">📐</div>
+              <div>
+                <div class="card-title">Straight Driving</div>
+                <div class="card-subtitle">The most critical skill</div>
+              </div>
+            </div>
+            <span class="card-chevron">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="card-body-inner">
+              <ul class="tip-list">
+                <li>A symmetric chassis is essential — measure distances carefully when building</li>
+                <li>Both drive axles must be perfectly parallel</li>
+                <li>Use a gyro sensor to correct drift during long straight runs</li>
+                <li>Test by driving 1 meter with no steering — it should deviate less than 2 cm</li>
+                <li>Tighten all axle joints — loose parts cause inconsistency</li>
+              </ul>
+              <div class="tip-highlight">💡 Build the chassis on a flat surface and check symmetry with a ruler before adding anything else.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="principle-card">
+          <div class="card-header">
+            <div class="card-header-left">
+              <div class="card-icon-box">🔩</div>
+              <div>
+                <div class="card-title">Structural Rigidity</div>
+                <div class="card-subtitle">No flex, no wobble</div>
+              </div>
+            </div>
+            <span class="card-chevron">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="card-body-inner">
+              <ul class="tip-list">
+                <li>Add cross-beams to prevent the frame from twisting</li>
+                <li>Use pins and bushings to lock all rotating parts that should be fixed</li>
+                <li>Shake the robot gently — nothing should rattle or shift</li>
+                <li>Reinforce the attachment mounting point — this takes the most stress</li>
+              </ul>
+              <div class="tip-highlight">💡 A flex in the frame translates directly into inconsistency. Build rigid, test rigid.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="principle-card">
+          <div class="card-header">
+            <div class="card-header-left">
+              <div class="card-icon-box">🏁</div>
+              <div>
+                <div class="card-title">Launch Position</div>
+                <div class="card-subtitle">Same spot every run</div>
+              </div>
+            </div>
+            <span class="card-chevron">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="card-body-inner">
+              <ul class="tip-list">
+                <li>Design a flat, flush base — the robot must sit perfectly on the home base line</li>
+                <li>Add a small notch or alignment guide that touches the mat wall/line</li>
+                <li>Mark the exact starting orientation with tape during practice</li>
+                <li>Every team member must place the robot the same way — practice this too</li>
+              </ul>
+              <div class="tip-highlight">💡 Even a 2mm offset at launch can mean missing the target 60 cm away.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="principle-card">
+          <div class="card-header">
+            <div class="card-header-left">
+              <div class="card-icon-box">🛞</div>
+              <div>
+                <div class="card-title">Wheel Grip</div>
+                <div class="card-subtitle">Traction on the mat</div>
+              </div>
+            </div>
+            <span class="card-chevron">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="card-body-inner">
+              <ul class="tip-list">
+                <li>Use rubber-grip tires, not smooth plastic wheels</li>
+                <li>Keep tire surfaces clean — grease or dust reduces grip drastically</li>
+                <li>Wipe tires with a dry cloth before every match</li>
+                <li>Avoid pressing the robot down hard on the mat — caster should barely touch</li>
+              </ul>
+              <div class="tip-highlight">💡 Check tire cleanliness during setup — it's one of the easiest consistency wins.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="content-divider">
+
+      <div class="checklist-section">
+        <div class="checklist-title">Chassis Build Checklist</div>
+        <div class="checklist">
+          <label class="check-item">
+            <input type="checkbox" data-key="c1">
+            <span class="check-label">Both drive wheels are the same size and model</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" data-key="c2">
+            <span class="check-label">Drive axles are parallel — measured with a ruler</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" data-key="c3">
+            <span class="check-label">Center of gravity is low and centered between wheels</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" data-key="c4">
+            <span class="check-label">Frame has no flex — cross-beams added</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" data-key="c5">
+            <span class="check-label">Robot drives 1 m straight within 2 cm deviation</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" data-key="c6">
+            <span class="check-label">Launch position is repeatable — alignment guide in place</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" data-key="c7">
+            <span class="check-label">Tires are clean and have good grip</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" data-key="c8">
+            <span class="check-label">All team members can place the robot identically</span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ ATTACHMENTS TAB ══════════════ -->
+    <section class="tab-section" id="tab-attachments">
+      <p class="section-eyebrow">Section 02 · Attachments</p>
+      <h1 class="section-title">Design mission tools</h1>
+      <p class="section-desc">Attachments are the robot's hands. Each one should do one job and do it reliably — every single time.</p>
+
+      <div class="cards-grid attach-grid">
+
+        <div class="principle-card">
+          <div class="card-header">
+            <div class="card-header-left">
+              <div class="card-icon-box">🔄</div>
+              <div>
+                <div class="card-title">Quick-Connect System</div>
+                <div class="card-subtitle">Swap tools between runs</div>
+              </div>
+            </div>
+            <span class="card-chevron">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="card-body-inner">
+              <ul class="tip-list">
+                <li>Design one shared mounting point on the chassis that all attachments connect to</li>
+                <li>Use a consistent connector — same pin holes, same orientation every time</li>
+                <li>Attachment must lock with a satisfying "click" — no wobble when mounted</li>
+                <li>Practice swapping under time pressure: target under 5 seconds</li>
+              </ul>
+              <div class="tip-highlight">💡 A loose attachment shifts during movement and ruins precision. Test by shaking the robot after connecting.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="principle-card">
+          <div class="card-header">
+            <div class="card-header-left">
+              <div class="card-icon-box">↔️</div>
+              <div>
+                <div class="card-title">Push Attachments</div>
+                <div class="card-subtitle">Simple and reliable</div>
+              </div>
+            </div>
+            <span class="card-chevron">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="card-body-inner">
+              <ul class="tip-list">
+                <li>Best for missions where the robot drives into an element to trigger it</li>
+                <li>Design the push surface to be wider than the target — more room for error</li>
+                <li>Angle the pusher slightly downward so it slides under elements rather than pushing them up</li>
+                <li>Works well for: M05 Who Lived Here?, M13 Statue Rebuild</li>
+              </ul>
+              <div class="tip-highlight">💡 Push attachments have zero moving parts — they never fail mechanically. Use them when possible.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="principle-card">
+          <div class="card-header">
+            <div class="card-header-left">
+              <div class="card-icon-box">⬆️</div>
+              <div>
+                <div class="card-title">Lift Attachments</div>
+                <div class="card-subtitle">Raise or flip elements</div>
+              </div>
+            </div>
+            <span class="card-chevron">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="card-body-inner">
+              <ul class="tip-list">
+                <li>Use a motor-driven arm or a passive lever that activates on contact</li>
+                <li>Keep the range of motion simple: 0° to 90° is usually enough</li>
+                <li>Motor lift: program to a fixed rotation count, not time (more consistent)</li>
+                <li>Works well for: M09 What's on Sale?, M12 Salvage Operation</li>
+              </ul>
+              <div class="tip-highlight">💡 Avoid rubber bands for tension — they degrade over many runs. Use gear ratios for consistent force instead.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="principle-card">
+          <div class="card-header">
+            <div class="card-header-left">
+              <div class="card-icon-box">🪝</div>
+              <div>
+                <div class="card-title">Hook & Grab</div>
+                <div class="card-subtitle">Pick up or pull elements</div>
+              </div>
+            </div>
+            <span class="card-chevron">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="card-body-inner">
+              <ul class="tip-list">
+                <li>Design the hook to slide over the target from above — don't approach from the side</li>
+                <li>The opening must be slightly larger than the target element for easy engagement</li>
+                <li>Add a guide rail so the robot doesn't need to be perfectly aligned to hook</li>
+                <li>Works well for: M07 Heavy Lifting, M04 Careful Recovery</li>
+              </ul>
+              <div class="tip-highlight">💡 Test with the element in the worst-case position, not the ideal one. If it works in the worst case, you're good.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="principle-card">
+          <div class="card-header">
+            <div class="card-header-left">
+              <div class="card-icon-box">🎯</div>
+              <div>
+                <div class="card-title">Alignment Guides</div>
+                <div class="card-subtitle">Remove the need for precision</div>
+              </div>
+            </div>
+            <span class="card-chevron">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="card-body-inner">
+              <ul class="tip-list">
+                <li>Add "funnel" guides on the attachment that steer it onto the target even if slightly off</li>
+                <li>Use mat lines or mission model surfaces to align before engaging</li>
+                <li>A wider contact surface tolerates more robot drift</li>
+                <li>Think: "what happens if we're 1 cm left?" — the design should still work</li>
+              </ul>
+              <div class="tip-highlight">💡 The best attachment design makes it nearly impossible to miss, even with imperfect driving.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="principle-card">
+          <div class="card-header">
+            <div class="card-header-left">
+              <div class="card-icon-box">🔁</div>
+              <div>
+                <div class="card-title">Repeatability Testing</div>
+                <div class="card-subtitle">Run it 20 times, not once</div>
+              </div>
+            </div>
+            <span class="card-chevron">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="card-body-inner">
+              <ul class="tip-list">
+                <li>Run each mission at least 20 times before considering it "done"</li>
+                <li>Track success rate — aim for 90%+ before competition</li>
+                <li>If it fails, note the exact failure mode and fix the root cause</li>
+                <li>Test with different team members placing the robot — human variation is real</li>
+                <li>Reset the mission model to exact starting position each time</li>
+              </ul>
+              <div class="tip-highlight">💡 One successful run means nothing. Twenty successful runs in a row means you're ready.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="content-divider">
+
+      <div class="checklist-section">
+        <div class="checklist-title">Attachment Readiness Checklist</div>
+        <div class="checklist">
+          <label class="check-item">
+            <input type="checkbox" data-key="a1">
+            <span class="check-label">Quick-connect mounts with no wobble on all attachments</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" data-key="a2">
+            <span class="check-label">Each attachment has been tested 20+ times</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" data-key="a3">
+            <span class="check-label">Success rate is 90% or above for each mission</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" data-key="a4">
+            <span class="check-label">Attachment swap time is under 5 seconds</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" data-key="a5">
+            <span class="check-label">Alignment guides added where robot positioning isn't perfect</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" data-key="a6">
+            <span class="check-label">Motor programs use rotation count, not time</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" data-key="a7">
+            <span class="check-label">All team members have practiced using each attachment</span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="js/robot.js"></script>
+</body>
+</html>
